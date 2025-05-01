@@ -46,7 +46,7 @@ products.forEach((product)=>{
             Added
           </div>
 
-          <button class="add-to-cart-button button-primary">
+          <button class="add-to-cart-button button-primary js-add-to-cart" data-product-id="${product.id}">
             Add to Cart
           </button>
         </div>
@@ -57,5 +57,34 @@ products.forEach((product)=>{
 
 
 document.querySelector('.js-products-grid').innerHTML= productsHTML;
+//the data attribute in html is custome attribute that let you store extra information on Html elements - which can you later access easily with javascript here the name started with data and write in kebab case when we use it converted into camel case
+document.querySelectorAll('.js-add-to-cart').forEach((button)=>{
+    button.addEventListener('click',()=>{
+        // console.log(button.dataset);//it is an object
+        // console.log(button.dataset.productName)
+        
+        const productId = button.dataset.productId;
+        console.log(productId);
+        let matchingItem;
+        cart.forEach((item)=>{
+            if(item.productId===productId){
+      matchingItem = item;
+            }
+            
+        })
+        if(matchingItem){
+            matchingItem.quantity+=1;
+        }
+        else{
+            cart.push({
+                productId:productId,
+                quantity:1
+            });
+        }
+     
+        console.log(cart)
+        
+    })
+})
 
 
