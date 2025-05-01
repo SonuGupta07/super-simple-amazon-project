@@ -1,4 +1,5 @@
-import{cart} from '../data/cart.js'
+import{cart} from '../data/cart.js';
+import{products} from '../data/products.js'
 //you can also do the same
 // import {cart as myCart} from '../data/cart.js'
 //.means current folder .. means one level up folder here javascript-amazon-project-main
