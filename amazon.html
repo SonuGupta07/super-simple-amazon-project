@@ -56,8 +56,10 @@
 
       </div>
     </div>
-    <script src="data/cart.js"></script>
+
     <script src="data/products.js"></script>
-    <script src="scripts/amazon.js"></script>
+    //type="module" enables let this file get variables out of other file
+    <script type="module" src="scripts/amazon.js"></script>
   </body>
 </html>
+<!-- due to the adding various script tag one variable of cart.js not used in product.js it gives naming conflict error hence to get rid of that we use the module -->

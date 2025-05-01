@@ -1,3 +1,12 @@
+import{cart} from '../data/cart.js'
+//you can also do the same
+// import {cart as myCart} from '../data/cart.js'
+//.means current folder .. means one level up folder here javascript-amazon-project-main
+//put all import at the top of the file 
+// to use module we have to use live server
+//benefits of module 
+//1heps us avoid naming conflict
+//we have to not worry about the order of load of module like earlier one in which script cart first should be load but here no such case
 
 let productsHTML = '';
 products.forEach((product)=>{
