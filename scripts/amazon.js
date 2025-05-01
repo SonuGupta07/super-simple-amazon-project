@@ -1,5 +1,6 @@
-import{cart} from '../data/cart.js';
+import{cart,addToCart} from '../data/cart.js';
 import{products} from '../data/products.js'
+
 //you can also do the same
 // import {cart as myCart} from '../data/cart.js'
 //.means current folder .. means one level up folder here javascript-amazon-project-main
@@ -10,6 +11,7 @@ import{products} from '../data/products.js'
 //we have to not worry about the order of load of module like earlier one in which script cart first should be load but here no such case
 
 let productsHTML = '';
+
 products.forEach((product)=>{
     const html=`
       <div class="product-container">
@@ -64,7 +66,16 @@ products.forEach((product)=>{
     productsHTML+=html;
     
 })
+function updateCartQuantity(){
+    let cartQuantity=0;
+    cart.forEach((cartItem)=>{
+        cartQuantity+=cartItem.quantity;
 
+
+    })
+    document.querySelector('.js-cart-quantity').innerHTML= cartQuantity;
+
+}
 
 document.querySelector('.js-products-grid').innerHTML= productsHTML;
 //the data attribute in html is custome attribute that let you store extra information on Html elements - which can you later access easily with javascript here the name started with data and write in kebab case when we use it converted into camel case
@@ -72,39 +83,12 @@ document.querySelectorAll('.js-add-to-cart').forEach((button)=>{
     button.addEventListener('click',()=>{
         // console.log(button.dataset);//it is an object
         // console.log(button.dataset.productName)
+        addToCart(button);
+        updateCartQuantity();
         
-        const productId = button.dataset.productId;
-    
-        let matchingItem;
-        cart.forEach((item)=>{
-            if(item.productId===productId){
-      matchingItem = item;
-            }
-            
-        })
-        if(matchingItem){
-            matchingItem.quantity+=1;
-        }
-        else{
-            cart.push({
-                productId:productId,
-                quantity:1
-            });
-        }
-        let cartQuantity=0;
-        cart.forEach((item)=>{
-            cartQuantity+=item.quantity;
-
-
-        })
-        document.querySelector('.js-cart-quantity').innerHTML= cartQuantity;
-        console.log(cartQuantity)
         
-     
-        console.log(cart)
-        
-    })
-})
+    });
+});
 
 
 
