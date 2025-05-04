@@ -7,6 +7,7 @@ import{deliveryOptions} from '../data/deliveryOption.js'
 //here the default export is happen wheenver we have to only export one core functionalliy then we use the default export 
 //while the upper one is name export form multiple export from file we use the name export
 //note all libraries has not esm version hence for some library we have to use script tag but dayjs has esm version so the upper one syntax we are able to use it
+function renderOrderSummary(){
 let cartSummaryHTMl='';
 
 
@@ -144,9 +145,12 @@ document.querySelectorAll('.js-delivery-option').forEach((element)=>{
 element.addEventListener('click',()=>{
   const {productId,deliveryOptionId} = element.dataset;
  updateDeiliveryOption(productId, deliveryOptionId)
+ renderOrderSummary();
 })
 })
-
+}
+// a function can call/re-run  itself is called recursion
+renderOrderSummary();
 
 
 
