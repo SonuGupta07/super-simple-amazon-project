@@ -1,33 +1,22 @@
 import {cart,removeFromCart,updateDeiliveryOption} from '../../data/cart.js';
-import { products } from '../../data/products.js';
+import { products,getProduct} from '../../data/products.js';
 import{formatCurrency}from '../utils/money.js'
 
 import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js'
-import{deliveryOptions} from '../../data/deliveryOption.js'
+import{deliveryOptions,getDeliveryOption} from '../../data/deliveryOption.js'
 //here the default export is happen wheenver we have to only export one core functionalliy then we use the default export 
 //while the upper one is name export form multiple export from file we use the name export
 //note all libraries has not esm version hence for some library we have to use script tag but dayjs has esm version so the upper one syntax we are able to use it
+
 export function renderOrderSummary(){
 let cartSummaryHTMl='';
 
 
 cart.forEach((cartItem)=>{
     const productId=cartItem.productId;
-    let matchingProduct ;
-    products.forEach((product)=>{
-        if(product.id===productId){
-            matchingProduct= product;
-
-        }
-    })
+    const  matchingProduct = getProduct(productId);
   const deliveryOptionId= cartItem.deliveryOptionId;
-  let deliveryOption ;
-  deliveryOptions.forEach((option)=>{
-    if(option.id===deliveryOptionId){
-      deliveryOption=option;
-    }
-
-  })
+  const  deliveryOption =getDeliveryOption(deliveryOptionId);
   const today= dayjs();
     const deliveryDate= today.add(
       deliveryOption.deliveryDays,'days'
