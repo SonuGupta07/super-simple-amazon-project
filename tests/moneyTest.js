@@ -25,4 +25,5 @@ if(formatCurrency(2000.4)==='20.00'){
 else{
     console.log('failed')
 }
+
 //group of related test is called  = test suite
