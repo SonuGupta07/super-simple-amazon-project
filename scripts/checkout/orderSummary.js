@@ -4,6 +4,7 @@ import{formatCurrency}from '../utils/money.js'
 
 import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js'
 import{deliveryOptions,getDeliveryOption} from '../../data/deliveryOption.js'
+import { renderPaymentSummary } from './paymentSummary.js';
 //here the default export is happen wheenver we have to only export one core functionalliy then we use the default export 
 //while the upper one is name export form multiple export from file we use the name export
 //note all libraries has not esm version hence for some library we have to use script tag but dayjs has esm version so the upper one syntax we are able to use it
@@ -79,8 +80,9 @@ document.querySelectorAll('.js-delete-link').forEach((link)=>{
  const productId = link.dataset.productId;
  removeFromCart(productId);
  const container =document.querySelector(`.js-cart-item-container-${productId}`)
- console.log(container);
+
  container.remove();
+ renderPaymentSummary();
 
     })
 })
@@ -135,6 +137,7 @@ element.addEventListener('click',()=>{
   const {productId,deliveryOptionId} = element.dataset;
  updateDeiliveryOption(productId, deliveryOptionId)
  renderOrderSummary();
+ renderPaymentSummary();
 })
 })
 }
