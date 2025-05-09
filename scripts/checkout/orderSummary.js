@@ -26,6 +26,7 @@ cart.forEach((cartItem)=>{
     );
  
     const dateString= deliveryDate.format('dddd, MMMM D');
+   
 
   
 
