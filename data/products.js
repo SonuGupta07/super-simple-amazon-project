@@ -738,15 +738,15 @@ console.log(date.toLocaleTimeString())//hour:minute:second
 
 // if we not create the constructor then the parent constructor is run in child class
 //Built in  classes the classes that are provided by the language example are data generates an object that represents the current date 
-console.log(this)// here it give undefined because there is no object at which this can point
-function logThis(){
-  console.log(this);//it print sonu
+// console.log(this)// here it give undefined because there is no object at which this can point
+// function logThis(){
+//   console.log(this);//it print sonu
 
-}
-logThis();
-//inside the function we can change 'this" to whatever we want
-logThis.call('sonu')
-//arrow function do not able to change the value of this 
+// }
+// logThis();
+// //inside the function we can change 'this" to whatever we want
+// logThis.call('sonu')
+// //arrow function do not able to change the value of this 
 //in object this point to an object but in case of arrow function it behave like outer this that is undefined 
 /*
 const obj = {
