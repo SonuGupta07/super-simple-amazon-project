@@ -730,5 +730,39 @@ export const products = [
   return new Product(productDetails);
 
 })
+/*
+const date = new Date();
+console.log(date);
+console.log(date.toLocaleTimeString())//hour:minute:second 
+*/
 
 // if we not create the constructor then the parent constructor is run in child class
+//Built in  classes the classes that are provided by the language example are data generates an object that represents the current date 
+console.log(this)// here it give undefined because there is no object at which this can point
+function logThis(){
+  console.log(this);//it print sonu
+
+}
+logThis();
+//inside the function we can change 'this" to whatever we want
+logThis.call('sonu')
+//arrow function do not able to change the value of this 
+//in object this point to an object but in case of arrow function it behave like outer this that is undefined 
+/*
+const obj = {
+  sonu(){
+    console.log(this)
+  },
+  name:'sonu gupta',
+  fun:()=>{
+    console.log(this)// arrow function do not change the value of this represents the outside 
+  }
+}
+console.log(obj.sonu());
+obj.fun();
+//summary of this 
+1.inside a method 'this' point to the outer objects
+2.inside the function this = undefined but we can change it whatever we want
+3.Arrow function do not change the value of this 
+*/
+
