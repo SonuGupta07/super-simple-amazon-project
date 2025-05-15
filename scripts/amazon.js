@@ -1,5 +1,5 @@
 import{cart,addToCart} from '../data/cart.js';
-import{products} from '../data/products.js'
+import{products,loadProducts} from '../data/products.js'
 import { formatCurrency } from './utils/money.js';
 //you can also do the same
 // import {cart as myCart} from '../data/cart.js'
@@ -9,7 +9,8 @@ import { formatCurrency } from './utils/money.js';
 //benefits of module 
 //1heps us avoid naming conflict
 //we have to not worry about the order of load of module like earlier one in which script cart first should be load but here no such case
-
+loadProducts(renderProductsGrid);
+ function renderProductsGrid(){
 let productsHTML = '';
 
 products.forEach((product)=>{
@@ -91,6 +92,7 @@ document.querySelectorAll('.js-add-to-cart').forEach((button)=>{
         
     });
 });
+ }
 
 
 
