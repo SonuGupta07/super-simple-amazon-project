@@ -70,3 +70,16 @@ export function updateDeiliveryOption(productId,deliveryOptionId){
     matchingItem.deliveryOptionId= deliveryOptionId;
     saveToStorage();
 }
+export function loadCart(fun){
+    const xhr = new XMLHttpRequest();
+    xhr.addEventListener('load',()=>{
+      console.log(xhr.response)
+    
+      //here we provide a function as a prameter which is know as call back - afunction to run in the future
+      // means a call back is a function which is run in a future 
+      //fun is an callback 
+      fun()
+    })
+    xhr.open('GET','https://supersimplebackend.dev/cart');
+    xhr.send();
+  }
