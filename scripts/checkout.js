@@ -2,7 +2,7 @@ import {renderOrderSummary} from './checkout/orderSummary.js';
 import { renderPaymentSummary } from './checkout/paymentSummary.js';
 // import '../data/cart-class.js'
 // import '../data/backened-practice.js';
-import {loadProducts} from '../data/products.js'
+import {loadProducts,loadProductFetch} from '../data/products.js'
 import { loadCart } from '../data/cart.js';
 // it runs the innner function immediately
 /*
@@ -52,11 +52,8 @@ new Promise((resolve)=>{
 //hence promises help keep our code flat not make it nesty 
 //we can run multiple promise at the same time 
 Promise.all([
+    loadProductFetch(),
     new Promise((resolve)=>{
-        loadProducts(()=>{
-            resolve('value1');
-        })
-    }),new Promise((resolve)=>{
         loadCart(()=>{
             resolve('value2');
         })

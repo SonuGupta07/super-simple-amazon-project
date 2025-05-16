@@ -788,3 +788,36 @@ obj.fun();
 3.Arrow function do not change the value of this 
 */
 
+// fetch is another method to do http request but fetch uses a promise 
+export function loadProductFetch(){
+  //by default fetch make a get request 
+  // fetch return the promise here
+  const promise = fetch('https://supersimplebackend.dev/products').then((response)=>{
+
+return response.json();//it return new promise 
+  }).then((productdata)=>{
+    products = productdata.map((productDetails)=>{
+      if(productDetails.type==='clothing'){
+        return new Clothing(productDetails);
+      }
+      return new Product(productDetails);
+    
+    })
+    console.log('load products ')
+    //here we provide a function as a prameter which is know as call back - afunction to run in the future
+    // means a call back is a function which is run in a future 
+    //fun is an callback 
+  
+
+  })
+  //instead of callback in xmlhttprequest the fetch uses a promise to get a response
+
+return promise;
+
+
+}
+/*
+loadProductFetch().then(()=>{
+  console.log('next step')
+});
+*/
