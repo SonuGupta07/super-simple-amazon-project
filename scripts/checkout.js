@@ -51,18 +51,43 @@ new Promise((resolve)=>{
 // })
 //hence promises help keep our code flat not make it nesty 
 //we can run multiple promise at the same time 
-Promise.all([
-    loadProductFetch(),
-    new Promise((resolve)=>{
-        loadCart(()=>{
-            resolve('value2');
-        })
-    })
-]).then((value)=>{
-    console.log(value)
-    renderOrderSummary();
-    renderPaymentSummary();
-})
+//async make a function return a promise
+//await is used inside async the closest function should be async 
+async function loadPage(){
+    //  console.log('load page')
+    // this converted to resolve value2 
+     await loadProductFetch();
+     const value = await new Promise((resolve)=>{
+                loadCart(()=>{
+                    resolve('value3');//it get returned 
+                })
+            })
+     //it wait here till the result comes
+     renderOrderSummary();
+     renderPaymentSummary();
+     console.log(value)
+     
+}
+loadPage();
+//this upper one is a shortcut of this 
+// function loadPage(){
+//     return new Promise((resolve)=>{
+//         console.log('load page')
+//         resolve();
+//     })
+// }
+// Promise.all([
+//     loadProductFetch(),
+//     new Promise((resolve)=>{
+//         loadCart(()=>{
+//             resolve('value2');
+//         })
+//     })
+// ]).then((value)=>{
+//     // console.log(value)
+//     renderOrderSummary();
+//     renderPaymentSummary();
+// })
 
 
 //here we use callback without a name 
@@ -72,3 +97,5 @@ Promise.all([
 // Qwhy do we use Promises rather than a callback? 
 // -> multiple callback cause a lot of  nesting
 // -> nesting means having code inside code
+//async await is an shortcut of an promises it removes extra code 
+//we can only use await, when we are inside an async function 

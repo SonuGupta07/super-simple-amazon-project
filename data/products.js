@@ -74,7 +74,7 @@ export function loadProducts(fun){
       return new Product(productDetails);
     
     })
-    console.log('load products ')
+    // console.log('load products ')
     //here we provide a function as a prameter which is know as call back - afunction to run in the future
     // means a call back is a function which is run in a future 
     //fun is an callback 
@@ -803,7 +803,7 @@ return response.json();//it return new promise
       return new Product(productDetails);
     
     })
-    console.log('load products ')
+    // console.log('load products ')
     //here we provide a function as a prameter which is know as call back - afunction to run in the future
     // means a call back is a function which is run in a future 
     //fun is an callback 
@@ -811,6 +811,7 @@ return response.json();//it return new promise
 
   })
   //instead of callback in xmlhttprequest the fetch uses a promise to get a response
+  console.log('load product')
 
 return promise;
 

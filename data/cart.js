@@ -73,7 +73,7 @@ export function updateDeiliveryOption(productId,deliveryOptionId){
 export function loadCart(fun){
     const xhr = new XMLHttpRequest();
     xhr.addEventListener('load',()=>{
-      console.log(xhr.response)
+    //   console.log(xhr.response)
     
       //here we provide a function as a prameter which is know as call back - afunction to run in the future
       // means a call back is a function which is run in a future 
