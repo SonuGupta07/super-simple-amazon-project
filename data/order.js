@@ -6,3 +6,4 @@ export function addOrder(order){
 function saveToStorage(){
     localStorage.setItem('orders',JSON.stringify(orders));
 }
+// url parameter= let us save data directly in the url 
