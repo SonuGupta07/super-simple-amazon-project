@@ -52,13 +52,18 @@ new Promise((resolve)=>{
 //hence promises help keep our code flat not make it nesty 
 //we can run multiple promise at the same time 
 //async make a function return a promise
-//await is used inside async the closest function should be async 
+//await is used inside async the closest function should be async
+//handle error in async and await  
 async function loadPage(){
     //  console.log('load page')
     // this converted to resolve value2 
+    try{
+        // throw 'error1'
      await loadProductFetch();
-     const value = await new Promise((resolve)=>{
+     const value = await new Promise((resolve,reject)=>{
+        // throw 'error2'
                 loadCart(()=>{
+                //    reject('error3')
                     resolve('value3');//it get returned 
                 })
             })
@@ -66,7 +71,9 @@ async function loadPage(){
      renderOrderSummary();
      renderPaymentSummary();
      console.log(value)
-     
+        } catch(error){
+console.log('error occured: please try again later')
+        }
 }
 loadPage();
 //this upper one is a shortcut of this 

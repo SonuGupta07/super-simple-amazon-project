@@ -80,9 +80,15 @@ export function loadProducts(fun){
     //fun is an callback 
     fun()
   })
+  //error handling 
+  xhr.addEventListener('error',(error)=>{
+console.log(error)
+    console.log('Unexpected error please try again later')
+  })
   xhr.open('GET','https://supersimplebackend.dev/products');
   xhr.send();
 }
+
 
 /*
 export const products = [
@@ -789,6 +795,7 @@ obj.fun();
 */
 
 // fetch is another method to do http request but fetch uses a promise 
+//handle error in promises
 export function loadProductFetch(){
   //by default fetch make a get request 
   // fetch return the promise here
@@ -809,6 +816,8 @@ return response.json();//it return new promise
     //fun is an callback 
   
 
+  }).catch((error)=>{
+    console.log('Unexpected error:please try again later')
   })
   //instead of callback in xmlhttprequest the fetch uses a promise to get a response
   console.log('load product')
